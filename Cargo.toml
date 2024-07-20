@@ -1,0 +1,25 @@
+[package]
+name = "spore-dob-ring"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+linked_list_allocator = "*"
+
+ckb-gen-types = { version = "0.116.1", default-features = false }
+hex = { version = "0.4.3", default-features = false, features = ["alloc"] }
+serde_json = { version = "1.0", default-features = false, features = ["alloc"] }
+serde = { version = "1.0", default-features = false, features = ["serde_derive"] }
+
+[dev-dependencies]
+lazy_static = "1.5"
+ckb-hash = "0.114"
+
+[profile.release]
+overflow-checks = true
+strip = true
+opt-level = 's'
+lto = true
+codegen-units = 1
